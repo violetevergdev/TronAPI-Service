@@ -1,0 +1,27 @@
+{
+  "database": {
+    "postgres": {
+      "user": "",
+      "password": "",
+      "host": "",
+      "port": "",
+      "database": ""
+    },
+    "postgres_test": {
+      "user": "",
+      "password": "",
+      "host": "",
+      "port": "",
+      "database": ""
+    }
+  },
+  "tron-api": {
+    "api-key": ""
+  },
+  "test-data": {
+    "tron-addresses": [
+      "",
+      ""
+    ]
+  }
+}
