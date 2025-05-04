@@ -1,14 +1,13 @@
 from tronpy import Tron
 from tronpy.providers import HTTPProvider
-from typing import Optional, Dict, Any
+from typing import Optional
 
 
 class TronCustomClient:
-    def __init__(self, config: Dict[str, Any]) -> None:
-        self.config = config
-        self.client = Tron(HTTPProvider("https://api.shasta.trongrid.io",
-                                        api_key=self.config['tron-api']['api-key']),
-                           network='shasta')
+    def __init__(self, api_key: str) -> None:
+        self.client = Tron(HTTPProvider(
+            "https://api.shasta.trongrid.io",
+            api_key=api_key))
 
     def get_tron_info(self, address: str) -> Optional[dict]:
         try:

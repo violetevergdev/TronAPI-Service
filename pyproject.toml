@@ -1,10 +1,11 @@
 [project]
-name = "Tron API Service"
+name = "Tron_API_Service"
 version = "0.1.0"
 description = ""
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
+    "asyncpg>=0.30.0",
     "dotenv>=0.9.9",
     "fastapi[standard]>=0.115.12",
     "psycopg2-binary>=2.9.10",

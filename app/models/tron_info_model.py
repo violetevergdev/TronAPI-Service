@@ -1,7 +1,8 @@
 from sqlalchemy.orm import Mapped, mapped_column
-from sqlalchemy import BigInteger
-from datetime import datetime
-from modules.database import Base
+from sqlalchemy import BigInteger, DateTime
+from datetime import datetime, timezone
+from app.db.base import Base
+
 
 class TronInfo(Base):
     __tablename__ = 'tron_info'
@@ -11,5 +12,5 @@ class TronInfo(Base):
     bandwidth: Mapped[int]
     energy: Mapped[int]
     trx_balance: Mapped[int]
-    timestamp: Mapped[datetime] = mapped_column(default=datetime.utcnow, index=True)
+    timestamp: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=datetime.now(timezone.utc), index=True)
 

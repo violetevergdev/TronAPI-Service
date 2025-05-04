@@ -16,13 +16,10 @@ class TronItemResponse(BaseModel):
     timestamp: datetime
 
 
-class TronPaginationResponse(BaseModel):
+class TronResponse(BaseModel):
     total_items: int
     total_pages: int
     page: int
     per_page: int
-
-
-class TronResponse(BaseModel):
     items: List[TronItemResponse]
-    pagination: TronPaginationResponse
+
