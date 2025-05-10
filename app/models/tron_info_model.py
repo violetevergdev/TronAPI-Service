@@ -14,3 +14,11 @@ class TronInfo(Base):
     trx_balance: Mapped[int]
     timestamp: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=datetime.now(timezone.utc), index=True)
 
+    def to_dict(self):
+        return {
+            "address": self.address,
+            "bandwidth": self.bandwidth,
+            "energy": self.energy,
+            "trx_balance": self.trx_balance,
+            "timestamp": self.timestamp.isoformat(),
+        }

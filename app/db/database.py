@@ -1,4 +1,4 @@
-from typing import AsyncGenerator, Dict, Optional
+from typing import AsyncGenerator, Dict, Optional, Any
 from abc import ABC, abstractmethod
 from contextlib import asynccontextmanager
 import os
@@ -9,7 +9,7 @@ from sqlalchemy.ext.asyncio import AsyncSession, AsyncEngine, create_async_engin
 class Database(ABC):
     REQUIRED_KEYS = {'user', 'password', 'host', 'port', 'database'}
 
-    def __init__(self, config: str):
+    def __init__(self, config: Dict[str, Any]):
         self._config = config
         self._engine: Optional[AsyncEngine] = None
         self._async_session: Optional[async_sessionmaker[AsyncSession]] = None

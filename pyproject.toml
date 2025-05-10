@@ -1,6 +1,6 @@
 [project]
 name = "Tron_API_Service"
-version = "0.1.0"
+version = "1.1.0"
 description = ""
 readme = "README.md"
 requires-python = ">=3.12"
@@ -10,6 +10,7 @@ dependencies = [
     "fastapi[standard]>=0.115.12",
     "psycopg2-binary>=2.9.10",
     "pydantic>=2.11.3",
+    "redis>=6.0.0",
     "sqlalchemy>=2.0.40",
     "tronpy>=0.5.0",
     "uvicorn>=0.34.0",

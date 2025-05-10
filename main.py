@@ -1,16 +1,9 @@
 from fastapi import FastAPI
+
 from app.api.tron_routes import router
-from app.core.deps import db
+from app.lifespan import lifespan
 
-import uvicorn
-
-
-app = FastAPI()
-
-
-@app.on_event("startup")
-async def startup():
-    await db.initialize()
+app = FastAPI(lifespan=lifespan)
 
 @app.get('/')
 async def root():
@@ -19,4 +12,14 @@ async def root():
 app.include_router(router)
 
 if __name__ == '__main__':
-    uvicorn.run('main:app', reload=True)
+    import uvicorn
+
+    uvi_conf = uvicorn.Config(
+        app='main:app',
+        host='127.0.0.1',
+        port=8000,
+        reload=True,
+        timeout_graceful_shutdown=10
+    )
+    server = uvicorn.Server(uvi_conf)
+    server.run()

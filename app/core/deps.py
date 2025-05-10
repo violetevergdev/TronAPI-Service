@@ -1,9 +1,11 @@
+from fastapi import Request
+
 from app.services.tron_service import TronService
-from app.core.config import Config
-from app.db.database import PostgresDatabase
 
-config = Config.get_config()
-db = PostgresDatabase(config['database'])
 
-def get_tron_service() -> TronService:
-    return TronService(db=db, api_key=config['tron-api']['api-key'])
+async def get_tron_service(request: Request) -> TronService:
+    db = request.app.state.db
+    config = request.app.state.config
+    redis = request.app.state.redis
+
+    return TronService(db=db, api_key=config["tron-api"]["api-key"], redis=redis)

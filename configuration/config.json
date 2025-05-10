@@ -15,6 +15,12 @@
       "database": ""
     }
   },
+  "redis": {
+    "host": "",
+    "port": "",
+    "password": "",
+    "db": ""
+  },
   "tron-api": {
     "api-key": ""
   },
